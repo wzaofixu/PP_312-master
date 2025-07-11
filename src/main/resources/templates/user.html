@@ -72,16 +72,14 @@
     <tr>
         <th>Id</th>
         <th>Username</th>
-        <th>Password</th>
         <th>Role</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="u : ${users}">
-        <td th:text="${u.id}"></td>
-        <td th:text="${u.username}"></td>
-        <td th:text="${u.password}"></td>
-        <td th:text="${u.roles}"></td>
+    <tr th:each="u : ${user}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${#strings.listJoin(user.roles, ', ')}"></td>
     </tr>
     </tbody>
 </table>

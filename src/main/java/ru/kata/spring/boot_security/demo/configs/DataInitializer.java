@@ -35,6 +35,11 @@ public class DataInitializer implements CommandLineRunner {
                 adminRole = new Role("ROLE_ADMIN");
                 roleRepository.save(adminRole);
             }
+            Role userRole = roleRepository.findByName("ROLE_USER");
+            if (userRole == null) {
+                userRole = new Role("ROLE_USER");
+                roleRepository.save(userRole);
+            }
             // Создаём дефолтного пользователя
             User admin = new User();
             admin.setUsername("admin");
