@@ -27,13 +27,11 @@ public class AdminController {
 
     private final UserService userService;
     private final RoleService roleService;
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public AdminController(UserService userService, RoleService roleService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping
@@ -51,7 +49,6 @@ public class AdminController {
 
     @PostMapping("/save")
     public String saveUser(@ModelAttribute("user") User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.saveUser(user);
         return "redirect:/admin";
     }
